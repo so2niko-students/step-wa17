@@ -23,4 +23,14 @@ class DataBase
         return $this->dbConnection;
     }
 
+    public function setUser($userArr){
+        $this->connect();
+
+        $this->dbConnection->exec("INSERT INTO `user`(`login`, `password`, `email`, `name`, `surname`, `age`, `sex`, `salt`) 
+                                  VALUES ($userArr[0], $userArr[1],
+                                  $userArr[2],$userArr[3],$userArr[4]
+                                  ,$userArr[5],$userArr[6],$userArr[7])");
+
+        $this->dbConnection = "";
+    }
 }

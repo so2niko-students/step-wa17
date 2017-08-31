@@ -16,7 +16,6 @@ class User
     private $surname = "";
     private $age = "";
     private $sex = "";
-
     private $salt = "";
 
     //Гетэры и Сэтеры
@@ -62,4 +61,16 @@ class User
         return $this->sex;
     }
 
+    public function getUserArr(){
+        $userArr = [$this->login,
+                    $this->password,
+                    $this->email,
+                    $this->name,
+                    $this->surname,
+                    $this->age,
+                    $this->sex,
+                    $this->salt];
+
+        return $userArr;
+    }
 }
