@@ -8,6 +8,7 @@
 
 class User
 {
+    private $userID = "";
     private $login = "";
     private $password = "";
     private $email = "";
@@ -15,7 +16,7 @@ class User
     private $surname = "";
     private $age = "";
     private $sex = "";
-    private $userID = "";
+
     private $salt = "";
 
     //Гетэры и Сэтеры
@@ -36,9 +37,29 @@ class User
     }
 
     public function setPassword($password){
-        $this->password = $password;
+        if(1 === preg_match('/\w{8,30}/g', $password)){
+            $this->password = $password;
+            return true;
+        } else{
+            return false;
+        }
     }
 
-    //2 get
-    //1 set
+    public function setEmail($email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->email = $email;
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public function getAge(){
+        return $this->age;
+    }
+
+    public function getSex(){
+        return $this->sex;
+    }
+
 }
