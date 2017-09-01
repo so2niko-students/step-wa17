@@ -64,12 +64,12 @@ class User
     public function getUserArr(){
         $userArr = [':login' => $this->login,
                     ':password' => $this->password,
-                    $this->email,
-                    $this->name,
-                    $this->surname,
-                    $this->age,
-                    $this->sex,
-                    $this->salt];
+                    ':email' => $this->email,
+                    ':name' => $this->name,
+                    ':surname' => $this->surname,
+                    ':age' => $this->age,
+                    ':sex' => $this->sex,
+                    ':salt' => $this->salt];
 
         return $userArr;
     }

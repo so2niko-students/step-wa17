@@ -57,9 +57,7 @@ class DataBase
 
 
         //Выполнение
-        $in1->execute(array(':login' =>'dima2017',
-                            ':password' =>'45465452',
-                            ':email' =>'dima1812@coco.m1.ua', 'Dmitriy', 'Pentrenko', 14, 'M', '45dfgh546'));
+        $in1->execute($userArr);
 
 //        $this->dbConnection->exec("INSERT INTO `user`(`login`, `password`, `email`, `name`, `surname`, `age`, `sex`, `salt`)
 //                                  VALUES ('dima1000', '12345666666', 'dima1912@coco.m.ua', 'Dmitriy', 'Dmitrienko', 13, 'M', 'djfkg1234k')");
