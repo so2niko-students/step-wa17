@@ -21,7 +21,7 @@ class User
     //Гетэры и Сэтеры
     //Get & Set
 
-    public function  __constructor($login, $password, $email, $name, $surname, $age, $sex){
+    public function  __construct($login, $password, $email, $name, $surname, $age, $sex){
         $this->login = $login;
         $this->password = $password;
         $this->email = $email;
@@ -62,8 +62,8 @@ class User
     }
 
     public function getUserArr(){
-        $userArr = [$this->login,
-                    $this->password,
+        $userArr = [':login' => $this->login,
+                    ':password' => $this->password,
                     $this->email,
                     $this->name,
                     $this->surname,
