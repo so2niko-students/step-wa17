@@ -8,7 +8,6 @@
 
 class User
 {
-    private $userID = "";
     private $login = "";
     private $password = "";
     private $email = "";
@@ -23,12 +22,21 @@ class User
 
     public function  __construct($login, $password, $email, $name, $surname, $age, $sex){
         $this->login = $login;
-        $this->password = $password;
         $this->email = $email;
         $this->name = $name;
         $this->surname = $surname;
         $this->age = $age;
         $this->sex = $sex;
+        $this->salt =  $this->genSalt();
+        $this->password = crypt($password, '$5$rounds=999000$' .$this->salt);
+    }
+
+    private function genSalt(){
+        $salt = "";
+        for($i = 0; $i < 16; $i++){
+            $salt .= chr(rand(33,126));
+        }
+        return $salt;
     }
 
     public function getFullName(){

@@ -9,7 +9,7 @@
 require_once "class/DataBase.php";
 require_once "class/User.php";
 
-$user1 = new User("dima3000", "222333", "dima1917@coco.m.ua", "Dmitriy", "petrovenko", 11, "M");
+$user1 = new User("Vladdddddd", "pwd", "vlad@gmail.com", "Vladislav", "Pr", 42, "M");
 
 $db1 = new DataBase();
 

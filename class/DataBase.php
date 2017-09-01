@@ -27,20 +27,30 @@ class DataBase
 
 
     public function connect(){
+
+        $dbFirstLine = "";
+
         switch ($this->dbType){
             case "mysql":{
-                $this->dbConnection = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->login, $this->password);
+                $dbFirstLine = "mysql:host=$this->host;dbname=$this->dbname";
                 break;
             }
             case "sqlite":{
-                $this->dbConnection = new PDO("sqlite:$this->dbpath", $this->login, $this->password);
+                $dbFirstLine = "sqlite:$this->dbpath";
                 break;
             }
             case "postgresql":{
-                $this->dbConnection = new PDO("pgsql:host=$this->host dbname=$this->dbname", $this->login, $this->password);
+                $dbFirstLine ="pgsql:host=$this->host dbname=$this->dbname";
                 break;
             }
         }
+
+        try{
+            $this->dbConnection = new PDO($dbFirstLine, $this->login, $this->password);
+        } catch(PDOException $pdoEx){
+            die('Connection ERROR, ' . $pdoEx->getMessage());
+        }
+
         return true;
     }
 
@@ -56,17 +66,9 @@ class DataBase
                                   VALUES (:login, :password, :email, :name, :surname, :age, :sex, :salt)");
 
 
-        //Выполнение
+        //Выполнение хранимой процедуры
         $in1->execute($userArr);
 
-//        $this->dbConnection->exec("INSERT INTO `user`(`login`, `password`, `email`, `name`, `surname`, `age`, `sex`, `salt`)
-//                                  VALUES ('dima1000', '12345666666', 'dima1912@coco.m.ua', 'Dmitriy', 'Dmitrienko', 13, 'M', 'djfkg1234k')");
-//        $this->dbConnection->exec("INSERT INTO `user`(`login`, `password`, `email`, `name`, `surname`, `age`, `sex`, `salt`)
-//                                  VALUES ($userArr[0], $userArr[1],
-//                                  $userArr[2],$userArr[3],$userArr[4],
-//                                  $userArr[5],$userArr[6],$userArr[7])");
-
-        print_r($userArr);
         $this->dbConnection = "";
     }
 }
