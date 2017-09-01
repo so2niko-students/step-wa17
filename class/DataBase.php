@@ -71,4 +71,20 @@ class DataBase
 
         $this->dbConnection = "";
     }
+
+    public function showUsers(){
+        $this->connect();
+
+        $sql = "SELECT * FROM user";
+        $answ = $this->dbConnection->query($sql);
+        $answ->setFetchMode(PDO::FETCH_NUM);
+
+        while($row = $answ->fetch(PDO::FETCH_LAZY)){
+            echo "<pre>";
+            var_dump($row);
+            echo "</pre><br><br>";
+        }
+
+
+    }
 }

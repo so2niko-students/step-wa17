@@ -9,8 +9,10 @@
 require_once "class/DataBase.php";
 require_once "class/User.php";
 
-$user1 = new User("Vladdddddd", "pwd", "vlad@gmail.com", "Vladislav", "Pr", 42, "M");
-
+//$user1 = new User("Vladdddddd", "pwd", "vlad@gmail.com", "Vladislav", "Pr", 42, "M");
+//
 $db1 = new DataBase();
 
-$db1->setUser($user1->getUserArr());
+//$db1->setUser($user1->getUserArr());
+
+$db1->showUsers();
